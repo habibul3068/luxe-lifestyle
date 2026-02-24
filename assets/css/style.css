@@ -49,16 +49,32 @@ body {
 /* HERO SECTION (STATIC IMAGE) */
 .hero-static {
     position: relative;
-    height: 500px;
     overflow: hidden;
+    /* Let image determine height on small screens, keep a comfortable max */
+    height: auto;
+    max-height: 600px;
 }
 
+/* Default: responsive image (mobile-first). On small screens the image will scale by width */
 .hero-static img {
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Aligns image to ensure left text is visible */
-    object-position: top center; 
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
+}
+
+/* Larger screens: keep a fixed hero height and use cover to fill area without letterboxing */
+@media (min-width: 769px) {
+    .hero-static {
+        height: 500px;
+    }
+    .hero-static img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
 }
 
 .hero-caption {
