@@ -46,22 +46,48 @@ body {
     color: #000;
 }
 
-/* HERO SECTION */
-.hero-slider .carousel-item {
+/* HERO SECTION (STATIC IMAGE) */
+.hero-static {
+    position: relative;
     height: 500px;
-    background-color: #ddd; 
+    overflow: hidden;
 }
 
-.hero-img-placeholder {
+.hero-static img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background: linear-gradient(45deg, var(--primary-color), #2c3e50);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.1);
-    font-size: 3rem;
+    /* Aligns image to ensure left text is visible */
+    object-position: top center; 
+}
+
+.hero-caption {
+    position: absolute;
+    /* Aligned exactly as you discovered */
+    top: 90%; 
+    left: 5%; 
+    z-index: 10;
+    transform: translateY(-50%); /* Keeps it balanced at that height */
+}
+
+/* Hero Button Styling (Small & Rounded) */
+.hero-caption .btn {
+    border-radius: 50px; /* Fully Rounded */
+    padding: 10px 30px;  /* Elegant sizing */
+    font-size: 0.85rem;  /* Smaller text */
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: #fff;
+    color: var(--primary-color);
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.hero-caption .btn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-3px);
 }
 
 /* CATEGORY CIRCLES */
@@ -187,6 +213,7 @@ footer ul li a:hover {
     letter-spacing: 0.5px;
 }
 
+/* Custom Checkbox Styling */
 .form-check-input:checked {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
@@ -204,6 +231,7 @@ footer ul li a:hover {
     padding-left: 3px;
 }
 
+/* Range Slider Styling */
 input[type=range] {
     height: 6px;
     background: #e9ecef;
@@ -228,22 +256,23 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 /* --- MOBILE RESPONSIVENESS FIXES --- */
 @media (max-width: 768px) {
-    /* Shrink Hero Slider Height on Phone */
-    .hero-slider .carousel-item {
-        height: 250px !important;
+    /* Shrink Hero Height */
+    .hero-static {
+        height: 300px;
     }
-    .hero-slider img {
-        height: 250px !important;
+    
+    /* Center Button on Mobile */
+    .hero-caption {
+        top: 85%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
     }
     
     /* Make Product Thumbnails smaller on mobile grid */
     .product-thumb {
         height: 180px; 
-    }
-    
-    /* Adjust text size for small screens */
-    .display-4 {
-        font-size: 2rem;
     }
     
     /* Shrink category circles slightly */
