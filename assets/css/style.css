@@ -63,11 +63,10 @@ body {
 
 .hero-caption {
     position: absolute;
-    /* Aligned exactly as you discovered */
-    top: 90%; 
+    top: 87%; /* Adjusted to stay below the paragraph without translateY */
     left: 5%; 
     z-index: 10;
-    transform: translateY(-50%); /* Keeps it balanced at that height */
+    transform: none; /* REMOVE the translateY to stop the button from jumping up */
 }
 
 /* Hero Button Styling (Small & Rounded) */
