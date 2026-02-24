@@ -271,18 +271,31 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 /* --- MOBILE RESPONSIVENESS FIXES --- */
 @media (max-width: 768px) {
-    /* Shrink Hero Height */
+    /* Let the hero height adapt to image on small screens to avoid empty space */
     .hero-static {
-        height: 300px;
+        height: auto;
+        max-height: 420px; /* keeps a comfortable maximum */
+        margin-bottom: 0.75rem;
     }
     
     /* Center Button on Mobile */
+    /* Keep the hero button visually in the same place as desktop
+       - avoid re-centering which moves its position and size
+    */
     .hero-caption {
-        top: 85%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        text-align: center;
+        top: 87%;
+        left: 5%;
+        transform: none;
+        width: auto;
+        text-align: left;
+        z-index: 20;
+    }
+
+    /* Ensure button keeps the same padding/size on mobile */
+    .hero-caption .btn {
+        padding: 10px 30px;
+        font-size: 0.85rem;
+        min-width: 150px;
     }
     
     /* Make Product Thumbnails smaller on mobile grid */
